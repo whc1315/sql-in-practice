@@ -4,7 +4,7 @@ const { CONNECTION_STRING } = process.env;
 const Sequelize = require("sequelize");
 
 const sequelize = new Sequelize(CONNECTION_STRING, {
-  dialect: "postres",
+  dialect: "postgres",
   dialectOptions: {
     ssl: {
       rejectUnauthorized: false,
@@ -72,7 +72,9 @@ module.exports = {
         where a.approved = true and a.completed = false
         order by a.date desc;`
       )
-      .then((dbRes) => res.status(200).send(dbRes[0]))
+      .then((dbRes) => {
+        res.status(200).send(dbRes[0]);
+      })
       .catch((err) => console.log(err));
   },
 
