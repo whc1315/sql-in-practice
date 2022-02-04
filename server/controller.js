@@ -86,7 +86,7 @@ module.exports = {
         `
         UPDATE cc_appointments
         SET approved = true
-        WHERE appt_id = ${apptId}
+        WHERE appt_id = ${apptId};
         insert into cc_emp_appts (emp_id, appt_id)
         values (${nextEmp}, ${apptId}),
         (${nextEmp + 1}, ${apptId});
